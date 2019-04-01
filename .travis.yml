@@ -1,0 +1,54 @@
+language: bash
+services: docker
+
+branches:
+  only:
+    - master
+
+env:
+  - PHP=7.1 OS=stretch E=cli F=debian
+  - PHP=7.1 OS=stretch E=apache F=debian
+  - PHP=7.1 OS=stretch E=fpm F=debian
+  - PHP=7.1 OS=stretch E=zts F=debian
+  - PHP=7.1 OS=jessie E=cli F=debian
+  - PHP=7.1 OS=jessie E=apache F=debian
+  - PHP=7.1 OS=jessie E=fpm F=debian
+  - PHP=7.1 OS=jessie E=zts F=debian
+  - PHP=7.1 OS=alpine3.8 E=cli F=alpine
+  - PHP=7.1 OS=alpine3.8 E=fpm F=alpine
+  - PHP=7.1 OS=alpine3.8 E=zts F=alpine
+  - PHP=7.1 OS=alpine3.9 E=cli F=alpine
+  - PHP=7.1 OS=alpine3.9 E=fpm F=alpine
+  - PHP=7.1 OS=alpine3.9 E=zts F=alpine
+  - PHP=7.2 OS=stretch E=cli F=debian
+  - PHP=7.2 OS=stretch E=apache F=debian
+  - PHP=7.2 OS=stretch E=fpm F=debian
+  - PHP=7.2 OS=stretch E=zts F=debian
+  - PHP=7.2 OS=alpine3.8 E=cli F=alpine
+  - PHP=7.2 OS=alpine3.8 E=fpm F=alpine
+  - PHP=7.2 OS=alpine3.8 E=zts F=alpine
+  - PHP=7.2 OS=alpine3.9 E=cli F=alpine
+  - PHP=7.2 OS=alpine3.9 E=fpm F=alpine
+  - PHP=7.2 OS=alpine3.9 E=zts F=alpine
+  - PHP=7.3 OS=stretch E=cli F=debian
+  - PHP=7.3 OS=stretch E=apache F=debian
+  - PHP=7.3 OS=stretch E=fpm F=debian
+  - PHP=7.3 OS=stretch E=zts F=debian
+  - PHP=7.3 OS=alpine3.8 E=cli F=alpine
+  - PHP=7.3 OS=alpine3.8 E=fpm F=alpine
+  - PHP=7.3 OS=alpine3.8 E=zts F=alpine
+  - PHP=7.3 OS=alpine3.9 E=cli F=alpine
+  - PHP=7.3 OS=alpine3.9 E=fpm F=alpine
+  - PHP=7.3 OS=alpine3.9 E=zts F=alpine
+
+script:
+  - tag="${PHP}-${E}-${OS}"
+  - image="solune/symfony:${tag}"
+  - echo "Building image ${tag}";
+  - cd $F
+  - docker build . -t "${image}" --build-arg IMAGE_FROM="php:${tag}"
+
+after_success:
+  - echo "Pushing ${image} to the registry"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push $image
