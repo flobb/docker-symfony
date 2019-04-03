@@ -1,6 +1,4 @@
-ARG IMAGE_FROM=php:7-alpine
-
-FROM $IMAGE_FROM
+FROM php:7.3.3-zts-alpine3.8
 
 ARG APCU_VERSION=5.1.17
 
@@ -39,12 +37,12 @@ RUN echo "short_open_tag = off" >> /usr/local/etc/php/zdocker.ini \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
-    && [[ "i386" = `uname -m` ]] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
+    && [ 'i386' = `uname -m` ] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
     && curl -sS https://get.symfony.com/cli/v$SYMFONYCLI_VERSION/symfony_linux_$SYMFONYCLI_MACHINE > /usr/local/bin/symfony.gz \
     && gzip -d /usr/local/bin/symfony.gz \
     && chmod +x /usr/local/bin/symfony
 
-ADD entrypoint.sh /usr/local/bin/entrypoint
+ADD entrypoint /usr/local/bin/entrypoint
 
 ENTRYPOINT ["entrypoint"]
 WORKDIR /srv

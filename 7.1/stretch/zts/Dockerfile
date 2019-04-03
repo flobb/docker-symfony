@@ -1,12 +1,11 @@
-ARG IMAGE_FROM=php:7-stretch
-
-FROM $IMAGE_FROM
+FROM php:7.1.27-zts-stretch
 
 ARG APCU_VERSION=5.1.17
 
 RUN buildDeps=" \
         libicu-dev \
         zlib1g-dev \
+        libzip-dev \
     " \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -14,6 +13,7 @@ RUN buildDeps=" \
         ca-certificates \
         git \
         openssh-client \
+        libzip4 \
         unzip \
     && docker-php-ext-install opcache mbstring intl zip \
     && pecl install apcu-$APCU_VERSION && docker-php-ext-enable apcu \
@@ -30,14 +30,12 @@ RUN echo "short_open_tag = off" >> /usr/local/etc/php/zdocker.ini \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
-    && [[ "i386" = `uname -m` ]] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
+    && [ 'i386' = `uname -m` ] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
     && curl -sS https://get.symfony.com/cli/v$SYMFONYCLI_VERSION/symfony_linux_$SYMFONYCLI_MACHINE > /usr/local/bin/symfony.gz \
     && gzip -d /usr/local/bin/symfony.gz \
     && chmod +x /usr/local/bin/symfony
 
-RUN [[ -d /etc/apache2 ]] && a2enmod rewrite || true
-
-ADD entrypoint.sh /usr/local/bin/entrypoint
+ADD entrypoint /usr/local/bin/entrypoint
 
 ENTRYPOINT ["entrypoint"]
 WORKDIR /srv
