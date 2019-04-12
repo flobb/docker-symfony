@@ -30,6 +30,7 @@ generated_warning() {
 
 travisEnv=
 dockerfiles=()
+readmeList=()
 for version in "${versions[@]}"; do
 	rcVersion="${version%-rc}"
 
@@ -134,13 +135,31 @@ for version in "${versions[@]}"; do
 			' "$version/$suite/$variant/Dockerfile" > "$version/$suite/$variant/Dockerfile.new"
 			mv "$version/$suite/$variant/Dockerfile.new" "$version/$suite/$variant/Dockerfile"
 
+            readme="$imageTag"
 			dockerfiles+=( "$version/$suite/$variant/Dockerfile" )
-			travisEnv+="\n  - FOLDER=$version/$suite/$variant/ TAG=$imageTag"
+			travisEnv+="\n  - FOLDER=$version/$suite/$variant/ TAGS=$imageTag"
+
+            if [ 'alpine3.9' = "$suite" ]; then
+                travisEnv+=",$majorVersion.$minorVersion-$variant"
+                readme+=", $majorVersion.$minorVersion-$variant"
+                if [ 'cli' = "$variant" ]; then
+                    travisEnv+=",$fullVersion,$majorVersion.$minorVersion"
+                    readme+=", $fullVersion, $majorVersion.$minorVersion"
+                fi
+            fi
+
+            readme+=" ([$version/$suite/$variant/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/$version/$suite/$variant/Dockerfile))"
+            readmeList=("$readme" "${readmeList[@]}")
+
 		done
 	done
 done
 
 sed -i "s/%%APCU_VERSION%%/5.1.17/g" "${dockerfiles[@]}"
 
-travis="$(awk -v 'RS=\n\n' '$1 == "env:" { $0 = "env:'"$travisEnv"'" } { printf "%s%s", $0, RS }' .travis.yml)"
+travis=$(awk -v tags="env:$travisEnv" -v 'RS=\n\n' '$1 == "env:" { $0 = tags } { printf "%s%s", $0, RS }' .travis.yml)
 echo "$travis" > .travis.yml
+
+readme=$(printf "\n- %s" "${readmeList[@]}")
+readme=$(awk -v tags=" Tags\n$readme\n\n" -v 'FS=\n\n' -v 'title=' -v 'RS=##' '$1 == " Tags" { $0 = tags; title=RS } { printf "%s%s", title, $0 }' README.md)
+echo "$readme" > README.md
