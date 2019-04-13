@@ -135,16 +135,16 @@ for version in "${versions[@]}"; do
 			' "$version/$suite/$variant/Dockerfile" > "$version/$suite/$variant/Dockerfile.new"
 			mv "$version/$suite/$variant/Dockerfile.new" "$version/$suite/$variant/Dockerfile"
 
-            readme="$imageTag"
+            readme="\`$imageTag\`"
 			dockerfiles+=( "$version/$suite/$variant/Dockerfile" )
 			travisEnv+="\n  - FOLDER=$version/$suite/$variant/ TAGS=$imageTag"
 
             if [ 'alpine3.9' = "$suite" ]; then
                 travisEnv+=",$majorVersion.$minorVersion-$variant"
-                readme+=", $majorVersion.$minorVersion-$variant"
+                readme+=", \`$majorVersion.$minorVersion-$variant\`"
                 if [ 'cli' = "$variant" ]; then
                     travisEnv+=",$fullVersion,$majorVersion.$minorVersion"
-                    readme+=", $fullVersion, $majorVersion.$minorVersion"
+                    readme+=", \`$fullVersion\`, \`$majorVersion.$minorVersion\`"
                 fi
             fi
 

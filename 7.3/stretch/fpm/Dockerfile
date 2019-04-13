@@ -1,4 +1,4 @@
-FROM php:7.3.3-fpm-stretch
+FROM php:7.3.4-fpm-stretch
 
 ARG APCU_VERSION=5.1.17
 

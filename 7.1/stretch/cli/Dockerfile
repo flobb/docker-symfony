@@ -1,4 +1,4 @@
-FROM php:7.1.27-cli-stretch
+FROM php:7.1.28-cli-stretch
 
 ARG APCU_VERSION=5.1.17
 

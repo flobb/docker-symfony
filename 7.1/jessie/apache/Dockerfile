@@ -1,4 +1,4 @@
-FROM php:7.1.27-apache-jessie
+FROM php:7.1.28-apache-jessie
 
 ARG APCU_VERSION=5.1.17
 

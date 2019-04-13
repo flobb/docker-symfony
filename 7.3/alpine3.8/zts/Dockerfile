@@ -1,4 +1,4 @@
-FROM php:7.3.3-zts-alpine3.8
+FROM php:7.3.4-zts-alpine3.8
 
 ARG APCU_VERSION=5.1.17
 
