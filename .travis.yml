@@ -43,20 +43,22 @@ env:
 
 script:
   - cd $FOLDER
+  - IMAGESLIST=()
   - IFS=, read -a TAGSLIST <<< "$TAGS"
   - |
     for TAG in "${TAGSLIST[@]}"
     do
       IMAGE="solune/symfony:${TAG}"
-      echo "Building image ${TAG}";
+      echo "Building image ${TAG}"
       docker build . -t "${IMAGE}"
+      IMAGESLIST+=("${IMAGE}")
     done
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - |
-    for TAG in "${TAGSLIST[@]}"
+    for IMAGE in "${IMAGESLIST[@]}"
     do
       echo "Pushing $IMAGE to the registry"
-      docker push "$IMAGE"
+      docker push "${IMAGE}"
     done
