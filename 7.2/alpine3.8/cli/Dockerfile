@@ -42,6 +42,8 @@ RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
     && gzip -d /usr/local/bin/symfony.gz \
     && chmod +x /usr/local/bin/symfony
 
+RUN sed -i '/www-data/s/\/home\/www-data/\/var\/www\//g' /etc/passwd
+
 ADD entrypoint /usr/local/bin/entrypoint
 
 ENTRYPOINT ["entrypoint"]

@@ -30,6 +30,8 @@ RUN runDeps="$( \
 
 %%SYMFONY%%
 
+RUN sed -i '/www-data/s/\/home\/www-data/\/var\/www\//g' /etc/passwd
+
 ADD entrypoint /usr/local/bin/entrypoint
 
 ENTRYPOINT ["entrypoint"]

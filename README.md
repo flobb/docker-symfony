@@ -9,6 +9,8 @@ You can also use the Symfony-CLI tool to initialize a project.
 
 The `latest` tag is set on the `7.3.X-fpm-alpine3.9` image.
 
+*Warning: You must mount a directory to `/srv` to make the entrypoint work (it change you to www-data user).*
+
 ## Tags
 
 - `7.3.4-zts-alpine3.8` ([7.3/alpine3.8/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.8/zts/Dockerfile))
