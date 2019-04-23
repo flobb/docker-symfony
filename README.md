@@ -7,6 +7,8 @@
 Docker image with all the minimum requirements for a Symfony project.
 You can also use the Symfony-CLI tool to initialize a project.
 
+Image based on the [PHP image](https://hub.docker.com/_/php)
+
 The `latest` tag is set on the `7.3.X-fpm-alpine3.9` image.
 
 *Warning: You must mount a directory to `/srv` to make the entrypoint work (it change you to www-data user).*
@@ -61,7 +63,9 @@ $ docker run -it --rm \
 Sharing your local Composer folder, allow you to share cache between containers and grant you some
 access token (to Github for example).
 
-## What change ?
+## What's in ?
+
+Image based on the [PHP image](https://hub.docker.com/_/php)
 
 It add Git, Composer and the Symfony-Cli tool in the image.
 
@@ -80,8 +84,3 @@ $ docker run -it --rm \
     -e SSH_AUTH_SOCK=/tmp/ssh_auth_sock \
     solune/symfony:latest \
     sh
-``` 
-
-## More documentation ?
-
-Image based on the [PHP image](https://hub.docker.com/_/php)
