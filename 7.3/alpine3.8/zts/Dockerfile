@@ -1,4 +1,4 @@
-FROM php:7.3.4-zts-alpine3.8
+FROM php:7.3.6-zts-alpine3.8
 
 ARG APCU_VERSION=5.1.17
 
@@ -35,7 +35,12 @@ RUN echo "short_open_tag = off" >> /usr/local/etc/php/zdocker.ini \
     && echo "realpath_cache_size=4096K" >> /usr/local/etc/php/conf.d/zdocker.ini \
     && echo "realpath_cache_ttl=600" >> /usr/local/etc/php/conf.d/zdocker.ini
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && mkdir -p /var/www/.composer/vendor/bin \
+    && echo "export PATH=\$PATH:~/.composer/vendor/bin/" >> /var/www/.profile \
+    && chown -R www-data:www-data /var/www/.composer /var/www/.profile \
+    && chmod +x /var/www/.profile
+
 RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
     && [ 'i386' = `uname -m` ] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
     && curl -sS https://get.symfony.com/cli/v$SYMFONYCLI_VERSION/symfony_linux_$SYMFONYCLI_MACHINE > /usr/local/bin/symfony.gz \
