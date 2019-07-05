@@ -30,9 +30,7 @@ RUN echo "short_open_tag = off" >> /usr/local/etc/php/zdocker.ini \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && mkdir -p /var/www/.composer/vendor/bin \
-    && echo "export PATH=\$PATH:~/.composer/vendor/bin/" >> /var/www/.profile \
-    && chown -R www-data:www-data /var/www/.composer /var/www/.profile \
-    && chmod +x /var/www/.profile
+    && chown -R www-data:www-data /var/www/.composer
 
 RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
     && [ 'i386' = `uname -m` ] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
