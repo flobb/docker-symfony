@@ -1,4 +1,4 @@
-FROM php:7.2.19-cli-stretch
+FROM php:7.2.21-cli-stretch
 
 ARG APCU_VERSION=5.1.17
 
@@ -22,9 +22,10 @@ RUN buildDeps=" \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # http://symfony.com/doc/current/performance.html
-RUN echo "short_open_tag = off" >> /usr/local/etc/php/zdocker.ini \
-    && echo "date.timezone = UTC" >> /usr/local/etc/php/conf.d/zdocker.ini \
-    && echo "opcache.max_accelerated_files = 20000" >> /usr/local/etc/php/conf.d/zdocker.ini \
+RUN echo "short_open_tag=off" >> /usr/local/etc/php/zdocker.ini \
+    && echo "date.timezone=UTC" >> /usr/local/etc/php/conf.d/zdocker.ini \
+    && echo "opcache.memory_consumption=256" >> /usr/local/etc/php/conf.d/zdocker.ini \
+    && echo "opcache.max_accelerated_files=20000" >> /usr/local/etc/php/conf.d/zdocker.ini \
     && echo "realpath_cache_size=4096K" >> /usr/local/etc/php/conf.d/zdocker.ini \
     && echo "realpath_cache_ttl=600" >> /usr/local/etc/php/conf.d/zdocker.ini
 

@@ -6,40 +6,40 @@ branches:
     - master
 
 env:
-  - FOLDER=7.1/stretch/cli/ TAGS=7.1.30-cli-stretch
-  - FOLDER=7.1/stretch/apache/ TAGS=7.1.30-apache-stretch
-  - FOLDER=7.1/stretch/fpm/ TAGS=7.1.30-fpm-stretch
-  - FOLDER=7.1/stretch/zts/ TAGS=7.1.30-zts-stretch
-  - FOLDER=7.1/jessie/cli/ TAGS=7.1.30-cli-jessie
-  - FOLDER=7.1/jessie/apache/ TAGS=7.1.30-apache-jessie
-  - FOLDER=7.1/jessie/fpm/ TAGS=7.1.30-fpm-jessie
-  - FOLDER=7.1/jessie/zts/ TAGS=7.1.30-zts-jessie
-  - FOLDER=7.1/alpine3.9/cli/ TAGS=7.1.30-cli-alpine3.9,7.1-cli,7.1.30,7.1
-  - FOLDER=7.1/alpine3.9/fpm/ TAGS=7.1.30-fpm-alpine3.9,7.1-fpm
-  - FOLDER=7.1/alpine3.9/zts/ TAGS=7.1.30-zts-alpine3.9,7.1-zts
-  - FOLDER=7.1/alpine3.8/cli/ TAGS=7.1.30-cli-alpine3.8
-  - FOLDER=7.1/alpine3.8/fpm/ TAGS=7.1.30-fpm-alpine3.8
-  - FOLDER=7.1/alpine3.8/zts/ TAGS=7.1.30-zts-alpine3.8
-  - FOLDER=7.2/stretch/cli/ TAGS=7.2.19-cli-stretch
-  - FOLDER=7.2/stretch/apache/ TAGS=7.2.19-apache-stretch
-  - FOLDER=7.2/stretch/fpm/ TAGS=7.2.19-fpm-stretch
-  - FOLDER=7.2/stretch/zts/ TAGS=7.2.19-zts-stretch
-  - FOLDER=7.2/alpine3.9/cli/ TAGS=7.2.19-cli-alpine3.9,7.2-cli,7.2.19,7.2
-  - FOLDER=7.2/alpine3.9/fpm/ TAGS=7.2.19-fpm-alpine3.9,7.2-fpm
-  - FOLDER=7.2/alpine3.9/zts/ TAGS=7.2.19-zts-alpine3.9,7.2-zts
-  - FOLDER=7.2/alpine3.8/cli/ TAGS=7.2.19-cli-alpine3.8
-  - FOLDER=7.2/alpine3.8/fpm/ TAGS=7.2.19-fpm-alpine3.8
-  - FOLDER=7.2/alpine3.8/zts/ TAGS=7.2.19-zts-alpine3.8
-  - FOLDER=7.3/stretch/cli/ TAGS=7.3.6-cli-stretch
-  - FOLDER=7.3/stretch/apache/ TAGS=7.3.6-apache-stretch
-  - FOLDER=7.3/stretch/fpm/ TAGS=7.3.6-fpm-stretch
-  - FOLDER=7.3/stretch/zts/ TAGS=7.3.6-zts-stretch
-  - FOLDER=7.3/alpine3.9/cli/ TAGS=7.3.6-cli-alpine3.9,7.3-cli,7.3.6,7.3
-  - FOLDER=7.3/alpine3.9/fpm/ TAGS=7.3.6-fpm-alpine3.9,7.3-fpm
-  - FOLDER=7.3/alpine3.9/zts/ TAGS=7.3.6-zts-alpine3.9,7.3-zts
-  - FOLDER=7.3/alpine3.8/cli/ TAGS=7.3.6-cli-alpine3.8
-  - FOLDER=7.3/alpine3.8/fpm/ TAGS=7.3.6-fpm-alpine3.8
-  - FOLDER=7.3/alpine3.8/zts/ TAGS=7.3.6-zts-alpine3.8
+  - FOLDER=7.1/stretch/cli/ TAGS=7.1.31-cli-stretch
+  - FOLDER=7.1/stretch/apache/ TAGS=7.1.31-apache-stretch
+  - FOLDER=7.1/stretch/fpm/ TAGS=7.1.31-fpm-stretch
+  - FOLDER=7.1/stretch/zts/ TAGS=7.1.31-zts-stretch
+  - FOLDER=7.1/jessie/cli/ TAGS=7.1.31-cli-jessie
+  - FOLDER=7.1/jessie/apache/ TAGS=7.1.31-apache-jessie
+  - FOLDER=7.1/jessie/fpm/ TAGS=7.1.31-fpm-jessie
+  - FOLDER=7.1/jessie/zts/ TAGS=7.1.31-zts-jessie
+  - FOLDER=7.1/alpine3.9/cli/ TAGS=7.1.31-cli-alpine3.9,7.1-cli,7.1.31,7.1
+  - FOLDER=7.1/alpine3.9/fpm/ TAGS=7.1.31-fpm-alpine3.9,7.1-fpm
+  - FOLDER=7.1/alpine3.9/zts/ TAGS=7.1.31-zts-alpine3.9,7.1-zts
+  - FOLDER=7.1/alpine3.8/cli/ TAGS=7.1.31-cli-alpine3.8
+  - FOLDER=7.1/alpine3.8/fpm/ TAGS=7.1.31-fpm-alpine3.8
+  - FOLDER=7.1/alpine3.8/zts/ TAGS=7.1.31-zts-alpine3.8
+  - FOLDER=7.2/stretch/cli/ TAGS=7.2.21-cli-stretch
+  - FOLDER=7.2/stretch/apache/ TAGS=7.2.21-apache-stretch
+  - FOLDER=7.2/stretch/fpm/ TAGS=7.2.21-fpm-stretch
+  - FOLDER=7.2/stretch/zts/ TAGS=7.2.21-zts-stretch
+  - FOLDER=7.2/alpine3.9/cli/ TAGS=7.2.21-cli-alpine3.9,7.2-cli,7.2.21,7.2
+  - FOLDER=7.2/alpine3.9/fpm/ TAGS=7.2.21-fpm-alpine3.9,7.2-fpm
+  - FOLDER=7.2/alpine3.9/zts/ TAGS=7.2.21-zts-alpine3.9,7.2-zts
+  - FOLDER=7.2/alpine3.8/cli/ TAGS=7.2.21-cli-alpine3.8
+  - FOLDER=7.2/alpine3.8/fpm/ TAGS=7.2.21-fpm-alpine3.8
+  - FOLDER=7.2/alpine3.8/zts/ TAGS=7.2.21-zts-alpine3.8
+  - FOLDER=7.3/stretch/cli/ TAGS=7.3.8-cli-stretch
+  - FOLDER=7.3/stretch/apache/ TAGS=7.3.8-apache-stretch
+  - FOLDER=7.3/stretch/fpm/ TAGS=7.3.8-fpm-stretch
+  - FOLDER=7.3/stretch/zts/ TAGS=7.3.8-zts-stretch
+  - FOLDER=7.3/alpine3.9/cli/ TAGS=7.3.8-cli-alpine3.9,7.3-cli,7.3.8,7.3
+  - FOLDER=7.3/alpine3.9/fpm/ TAGS=7.3.8-fpm-alpine3.9,7.3-fpm
+  - FOLDER=7.3/alpine3.9/zts/ TAGS=7.3.8-zts-alpine3.9,7.3-zts
+  - FOLDER=7.3/alpine3.8/cli/ TAGS=7.3.8-cli-alpine3.8
+  - FOLDER=7.3/alpine3.8/fpm/ TAGS=7.3.8-fpm-alpine3.8
+  - FOLDER=7.3/alpine3.8/zts/ TAGS=7.3.8-zts-alpine3.8
 
 script:
   - cd $FOLDER
