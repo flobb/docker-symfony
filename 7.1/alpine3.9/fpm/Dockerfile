@@ -1,4 +1,4 @@
-FROM php:7.1.31-fpm-alpine3.9
+FROM php:7.1.33-fpm-alpine3.9
 
 ARG APCU_VERSION=5.1.17
 
