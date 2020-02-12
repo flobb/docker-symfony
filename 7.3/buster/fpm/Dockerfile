@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.2.27-cli-stretch
+FROM php:7.3.14-fpm-buster
 
 ARG APCU_VERSION=5.1.17
 

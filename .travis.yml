@@ -6,40 +6,44 @@ branches:
     - master
 
 env:
-  - FOLDER=7.1/stretch/cli/ TAGS=7.1.33-cli-stretch
-  - FOLDER=7.1/stretch/apache/ TAGS=7.1.33-apache-stretch
-  - FOLDER=7.1/stretch/fpm/ TAGS=7.1.33-fpm-stretch
-  - FOLDER=7.1/stretch/zts/ TAGS=7.1.33-zts-stretch
-  - FOLDER=7.1/jessie/cli/ TAGS=7.1.33-cli-jessie
-  - FOLDER=7.1/jessie/apache/ TAGS=7.1.33-apache-jessie
-  - FOLDER=7.1/jessie/fpm/ TAGS=7.1.33-fpm-jessie
-  - FOLDER=7.1/jessie/zts/ TAGS=7.1.33-zts-jessie
-  - FOLDER=7.1/alpine3.9/cli/ TAGS=7.1.33-cli-alpine3.9,7.1-cli,7.1.33,7.1
-  - FOLDER=7.1/alpine3.9/fpm/ TAGS=7.1.33-fpm-alpine3.9,7.1-fpm
-  - FOLDER=7.1/alpine3.9/zts/ TAGS=7.1.33-zts-alpine3.9,7.1-zts
-  - FOLDER=7.1/alpine3.8/cli/ TAGS=7.1.33-cli-alpine3.8
-  - FOLDER=7.1/alpine3.8/fpm/ TAGS=7.1.33-fpm-alpine3.8
-  - FOLDER=7.1/alpine3.8/zts/ TAGS=7.1.33-zts-alpine3.8
+  - FOLDER=7.2/buster/cli/ TAGS=7.2.27-cli-buster
+  - FOLDER=7.2/buster/apache/ TAGS=7.2.27-apache-buster
+  - FOLDER=7.2/buster/fpm/ TAGS=7.2.27-fpm-buster
+  - FOLDER=7.2/buster/zts/ TAGS=7.2.27-zts-buster
   - FOLDER=7.2/stretch/cli/ TAGS=7.2.27-cli-stretch
   - FOLDER=7.2/stretch/apache/ TAGS=7.2.27-apache-stretch
   - FOLDER=7.2/stretch/fpm/ TAGS=7.2.27-fpm-stretch
   - FOLDER=7.2/stretch/zts/ TAGS=7.2.27-zts-stretch
-  - FOLDER=7.2/alpine3.9/cli/ TAGS=7.2.27-cli-alpine3.9,7.2-cli,7.2.27,7.2
-  - FOLDER=7.2/alpine3.9/fpm/ TAGS=7.2.27-fpm-alpine3.9,7.2-fpm
-  - FOLDER=7.2/alpine3.9/zts/ TAGS=7.2.27-zts-alpine3.9,7.2-zts
-  - FOLDER=7.2/alpine3.8/cli/ TAGS=7.2.27-cli-alpine3.8
-  - FOLDER=7.2/alpine3.8/fpm/ TAGS=7.2.27-fpm-alpine3.8
-  - FOLDER=7.2/alpine3.8/zts/ TAGS=7.2.27-zts-alpine3.8
+  - FOLDER=7.2/alpine3.11/cli/ TAGS=7.2.27-cli-alpine3.11
+  - FOLDER=7.2/alpine3.11/fpm/ TAGS=7.2.27-fpm-alpine3.11
+  - FOLDER=7.2/alpine3.11/zts/ TAGS=7.2.27-zts-alpine3.11
+  - FOLDER=7.2/alpine3.10/cli/ TAGS=7.2.27-cli-alpine3.10
+  - FOLDER=7.2/alpine3.10/fpm/ TAGS=7.2.27-fpm-alpine3.10
+  - FOLDER=7.2/alpine3.10/zts/ TAGS=7.2.27-zts-alpine3.10
+  - FOLDER=7.3/buster/cli/ TAGS=7.3.14-cli-buster
+  - FOLDER=7.3/buster/apache/ TAGS=7.3.14-apache-buster
+  - FOLDER=7.3/buster/fpm/ TAGS=7.3.14-fpm-buster
+  - FOLDER=7.3/buster/zts/ TAGS=7.3.14-zts-buster
   - FOLDER=7.3/stretch/cli/ TAGS=7.3.14-cli-stretch
   - FOLDER=7.3/stretch/apache/ TAGS=7.3.14-apache-stretch
   - FOLDER=7.3/stretch/fpm/ TAGS=7.3.14-fpm-stretch
   - FOLDER=7.3/stretch/zts/ TAGS=7.3.14-zts-stretch
-  - FOLDER=7.3/alpine3.9/cli/ TAGS=7.3.14-cli-alpine3.9,7.3-cli,7.3.14,7.3
-  - FOLDER=7.3/alpine3.9/fpm/ TAGS=7.3.14-fpm-alpine3.9,7.3-fpm
-  - FOLDER=7.3/alpine3.9/zts/ TAGS=7.3.14-zts-alpine3.9,7.3-zts
-  - FOLDER=7.3/alpine3.8/cli/ TAGS=7.3.14-cli-alpine3.8
-  - FOLDER=7.3/alpine3.8/fpm/ TAGS=7.3.14-fpm-alpine3.8
-  - FOLDER=7.3/alpine3.8/zts/ TAGS=7.3.14-zts-alpine3.8
+  - FOLDER=7.3/alpine3.11/cli/ TAGS=7.3.14-cli-alpine3.11
+  - FOLDER=7.3/alpine3.11/fpm/ TAGS=7.3.14-fpm-alpine3.11
+  - FOLDER=7.3/alpine3.11/zts/ TAGS=7.3.14-zts-alpine3.11
+  - FOLDER=7.3/alpine3.10/cli/ TAGS=7.3.14-cli-alpine3.10
+  - FOLDER=7.3/alpine3.10/fpm/ TAGS=7.3.14-fpm-alpine3.10
+  - FOLDER=7.3/alpine3.10/zts/ TAGS=7.3.14-zts-alpine3.10
+  - FOLDER=7.4/buster/cli/ TAGS=7.4.2-cli-buster
+  - FOLDER=7.4/buster/apache/ TAGS=7.4.2-apache-buster
+  - FOLDER=7.4/buster/fpm/ TAGS=7.4.2-fpm-buster
+  - FOLDER=7.4/buster/zts/ TAGS=7.4.2-zts-buster
+  - FOLDER=7.4/alpine3.11/cli/ TAGS=7.4.2-cli-alpine3.11
+  - FOLDER=7.4/alpine3.11/fpm/ TAGS=7.4.2-fpm-alpine3.11
+  - FOLDER=7.4/alpine3.11/zts/ TAGS=7.4.2-zts-alpine3.11
+  - FOLDER=7.4/alpine3.10/cli/ TAGS=7.4.2-cli-alpine3.10
+  - FOLDER=7.4/alpine3.10/fpm/ TAGS=7.4.2-fpm-alpine3.10
+  - FOLDER=7.4/alpine3.10/zts/ TAGS=7.4.2-zts-alpine3.10
 
 script:
   - cd $FOLDER

@@ -11,10 +11,10 @@ RUN apk add --no-cache --virtual .build-deps \
     ca-certificates \
     git \
     openssh-client \
-    unzip
+    unzip \
+    oniguruma-dev
 
-RUN docker-php-ext-configure zip --with-libzip \
-    && docker-php-ext-install intl opcache mbstring zip \
+RUN docker-php-ext-install intl opcache mbstring zip \
     && pecl install apcu-$APCU_VERSION \
     && pecl clear-cache \
     && docker-php-ext-enable apcu

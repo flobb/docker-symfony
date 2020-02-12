@@ -1,3 +1,9 @@
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "update.sh"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+
 FROM php:7.3.14-fpm-stretch
 
 ARG APCU_VERSION=5.1.17
@@ -6,6 +12,7 @@ RUN buildDeps=" \
         libicu-dev \
         zlib1g-dev \
         libzip-dev \
+        libonig-dev \
     " \
     && apt-get update \
     && apt-get install -y --no-install-recommends \

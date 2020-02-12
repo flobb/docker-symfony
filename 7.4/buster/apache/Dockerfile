@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.2.27-cli-stretch
+FROM php:7.4.2-apache-buster
 
 ARG APCU_VERSION=5.1.17
 
@@ -45,6 +45,8 @@ RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
     && curl -sS https://get.symfony.com/cli/v$SYMFONYCLI_VERSION/symfony_linux_$SYMFONYCLI_MACHINE > /usr/local/bin/symfony.gz \
     && gzip -d /usr/local/bin/symfony.gz \
     && chmod +x /usr/local/bin/symfony
+
+RUN a2enmod rewrite
 
 ADD entrypoint /usr/local/bin/entrypoint
 

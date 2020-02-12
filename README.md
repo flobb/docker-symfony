@@ -9,46 +9,50 @@ You can also use the Symfony-CLI tool to initialize a project.
 
 Image based on the [PHP image](https://hub.docker.com/_/php)
 
-The `latest` tag is set on the `7.3.X-fpm-alpine3.9` image.
+The `latest` tag is set on the `7.4.X-fpm-alpine3.9` image.
 
 *Warning: You must mount a directory to `/srv` to make the entrypoint work (it use the host user to match www-data user).*
 
 ## Tags
 
-- `7.3.14-zts-alpine3.8` ([7.3/alpine3.8/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.8/zts/Dockerfile))
-- `7.3.14-fpm-alpine3.8` ([7.3/alpine3.8/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.8/fpm/Dockerfile))
-- `7.3.14-cli-alpine3.8` ([7.3/alpine3.8/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.8/cli/Dockerfile))
-- `7.3.14-zts-alpine3.9`, `7.3-zts` ([7.3/alpine3.9/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.9/zts/Dockerfile))
-- `7.3.14-fpm-alpine3.9`, `7.3-fpm` ([7.3/alpine3.9/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.9/fpm/Dockerfile))
-- `7.3.14-cli-alpine3.9`, `7.3-cli`, `7.3.14`, `7.3` ([7.3/alpine3.9/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.9/cli/Dockerfile))
+- `7.4.2-zts-alpine3.10` ([7.4/alpine3.10/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/alpine3.10/zts/Dockerfile))
+- `7.4.2-fpm-alpine3.10` ([7.4/alpine3.10/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/alpine3.10/fpm/Dockerfile))
+- `7.4.2-cli-alpine3.10` ([7.4/alpine3.10/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/alpine3.10/cli/Dockerfile))
+- `7.4.2-zts-alpine3.11` ([7.4/alpine3.11/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/alpine3.11/zts/Dockerfile))
+- `7.4.2-fpm-alpine3.11` ([7.4/alpine3.11/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/alpine3.11/fpm/Dockerfile))
+- `7.4.2-cli-alpine3.11` ([7.4/alpine3.11/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/alpine3.11/cli/Dockerfile))
+- `7.4.2-zts-buster` ([7.4/buster/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/buster/zts/Dockerfile))
+- `7.4.2-fpm-buster` ([7.4/buster/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/buster/fpm/Dockerfile))
+- `7.4.2-apache-buster` ([7.4/buster/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/buster/apache/Dockerfile))
+- `7.4.2-cli-buster` ([7.4/buster/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.4/buster/cli/Dockerfile))
+- `7.3.14-zts-alpine3.10` ([7.3/alpine3.10/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.10/zts/Dockerfile))
+- `7.3.14-fpm-alpine3.10` ([7.3/alpine3.10/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.10/fpm/Dockerfile))
+- `7.3.14-cli-alpine3.10` ([7.3/alpine3.10/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.10/cli/Dockerfile))
+- `7.3.14-zts-alpine3.11` ([7.3/alpine3.11/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.11/zts/Dockerfile))
+- `7.3.14-fpm-alpine3.11` ([7.3/alpine3.11/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.11/fpm/Dockerfile))
+- `7.3.14-cli-alpine3.11` ([7.3/alpine3.11/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.11/cli/Dockerfile))
 - `7.3.14-zts-stretch` ([7.3/stretch/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/stretch/zts/Dockerfile))
 - `7.3.14-fpm-stretch` ([7.3/stretch/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/stretch/fpm/Dockerfile))
 - `7.3.14-apache-stretch` ([7.3/stretch/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/stretch/apache/Dockerfile))
 - `7.3.14-cli-stretch` ([7.3/stretch/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/stretch/cli/Dockerfile))
-- `7.2.27-zts-alpine3.8` ([7.2/alpine3.8/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.8/zts/Dockerfile))
-- `7.2.27-fpm-alpine3.8` ([7.2/alpine3.8/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.8/fpm/Dockerfile))
-- `7.2.27-cli-alpine3.8` ([7.2/alpine3.8/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.8/cli/Dockerfile))
-- `7.2.27-zts-alpine3.9`, `7.2-zts` ([7.2/alpine3.9/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.9/zts/Dockerfile))
-- `7.2.27-fpm-alpine3.9`, `7.2-fpm` ([7.2/alpine3.9/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.9/fpm/Dockerfile))
-- `7.2.27-cli-alpine3.9`, `7.2-cli`, `7.2.27`, `7.2` ([7.2/alpine3.9/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.9/cli/Dockerfile))
+- `7.3.14-zts-buster` ([7.3/buster/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/buster/zts/Dockerfile))
+- `7.3.14-fpm-buster` ([7.3/buster/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/buster/fpm/Dockerfile))
+- `7.3.14-apache-buster` ([7.3/buster/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/buster/apache/Dockerfile))
+- `7.3.14-cli-buster` ([7.3/buster/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/buster/cli/Dockerfile))
+- `7.2.27-zts-alpine3.10` ([7.2/alpine3.10/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.10/zts/Dockerfile))
+- `7.2.27-fpm-alpine3.10` ([7.2/alpine3.10/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.10/fpm/Dockerfile))
+- `7.2.27-cli-alpine3.10` ([7.2/alpine3.10/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.10/cli/Dockerfile))
+- `7.2.27-zts-alpine3.11` ([7.2/alpine3.11/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.11/zts/Dockerfile))
+- `7.2.27-fpm-alpine3.11` ([7.2/alpine3.11/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.11/fpm/Dockerfile))
+- `7.2.27-cli-alpine3.11` ([7.2/alpine3.11/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.11/cli/Dockerfile))
 - `7.2.27-zts-stretch` ([7.2/stretch/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/stretch/zts/Dockerfile))
 - `7.2.27-fpm-stretch` ([7.2/stretch/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/stretch/fpm/Dockerfile))
 - `7.2.27-apache-stretch` ([7.2/stretch/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/stretch/apache/Dockerfile))
 - `7.2.27-cli-stretch` ([7.2/stretch/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/stretch/cli/Dockerfile))
-- `7.1.33-zts-alpine3.8` ([7.1/alpine3.8/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/alpine3.8/zts/Dockerfile))
-- `7.1.33-fpm-alpine3.8` ([7.1/alpine3.8/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/alpine3.8/fpm/Dockerfile))
-- `7.1.33-cli-alpine3.8` ([7.1/alpine3.8/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/alpine3.8/cli/Dockerfile))
-- `7.1.33-zts-alpine3.9`, `7.1-zts` ([7.1/alpine3.9/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/alpine3.9/zts/Dockerfile))
-- `7.1.33-fpm-alpine3.9`, `7.1-fpm` ([7.1/alpine3.9/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/alpine3.9/fpm/Dockerfile))
-- `7.1.33-cli-alpine3.9`, `7.1-cli`, `7.1.33`, `7.1` ([7.1/alpine3.9/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/alpine3.9/cli/Dockerfile))
-- `7.1.33-zts-jessie` ([7.1/jessie/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/jessie/zts/Dockerfile))
-- `7.1.33-fpm-jessie` ([7.1/jessie/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/jessie/fpm/Dockerfile))
-- `7.1.33-apache-jessie` ([7.1/jessie/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/jessie/apache/Dockerfile))
-- `7.1.33-cli-jessie` ([7.1/jessie/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/jessie/cli/Dockerfile))
-- `7.1.33-zts-stretch` ([7.1/stretch/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/stretch/zts/Dockerfile))
-- `7.1.33-fpm-stretch` ([7.1/stretch/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/stretch/fpm/Dockerfile))
-- `7.1.33-apache-stretch` ([7.1/stretch/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/stretch/apache/Dockerfile))
-- `7.1.33-cli-stretch` ([7.1/stretch/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.1/stretch/cli/Dockerfile))
+- `7.2.27-zts-buster` ([7.2/buster/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/buster/zts/Dockerfile))
+- `7.2.27-fpm-buster` ([7.2/buster/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/buster/fpm/Dockerfile))
+- `7.2.27-apache-buster` ([7.2/buster/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/buster/apache/Dockerfile))
+- `7.2.27-cli-buster` ([7.2/buster/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/buster/cli/Dockerfile))
 
 ## Usage
 
@@ -84,3 +88,4 @@ $ docker run -it --rm \
     -e SSH_AUTH_SOCK=/tmp/ssh_auth_sock \
     solune/symfony:latest \
     sh
+```
