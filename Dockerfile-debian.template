@@ -8,6 +8,8 @@ RUN buildDeps=" \
         libzip-dev \
         libonig-dev \
     " \
+    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         $buildDeps \
@@ -16,6 +18,8 @@ RUN buildDeps=" \
         openssh-client \
         libzip4 \
         unzip \
+    && apt-get install -y \
+        yarn \
     && docker-php-ext-install opcache mbstring intl zip \
     && pecl install apcu-$APCU_VERSION && docker-php-ext-enable apcu \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \

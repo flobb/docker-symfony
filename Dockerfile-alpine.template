@@ -12,7 +12,8 @@ RUN apk add --no-cache --virtual .build-deps \
     git \
     openssh-client \
     unzip \
-    oniguruma-dev
+    oniguruma-dev \
+    yarn
 
 RUN docker-php-ext-install intl opcache mbstring zip \
     && pecl install apcu-$APCU_VERSION \
