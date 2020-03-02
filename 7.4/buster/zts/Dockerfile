@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.4.2-zts-buster
+FROM php:7.4.3-zts-buster
 
 ARG APCU_VERSION=5.1.17
 

@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.2.27-apache-stretch
+FROM php:7.2.28-apache-stretch
 
 ARG APCU_VERSION=5.1.17
 
@@ -45,6 +45,11 @@ RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
     && curl -sS https://get.symfony.com/cli/v$SYMFONYCLI_VERSION/symfony_linux_$SYMFONYCLI_MACHINE > /usr/local/bin/symfony.gz \
     && gzip -d /usr/local/bin/symfony.gz \
     && chmod +x /usr/local/bin/symfony
+
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+
+RUN mkdir -p /srv/public \
+    chown -R www-data:www-data /srv
 
 RUN a2enmod rewrite
 
