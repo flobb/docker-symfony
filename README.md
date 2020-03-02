@@ -60,6 +60,7 @@ The `latest` tag is set on the `7.4.X-fpm-alpine3.9` image.
 $ docker run -it --rm \
     -v "$PWD":/srv \
     -v ~/.composer:/var/www/.composer \
+    -v ~/.cache/yarn:/var/www/.cache/yarn \
     solune/symfony:latest \
     sh
 ```
@@ -84,6 +85,7 @@ You can also share your SSH socket to access private git repository or advanced 
 $ docker run -it --rm \
     -v "$PWD":/srv \
     -v ~/.composer:/var/www/.composer \
+    -v ~/.cache/yarn:/var/www/.cache/yarn \
     -v $SSH_AUTH_SOCK:/tmp/ssh_auth_sock:ro \
     -e SSH_AUTH_SOCK=/tmp/ssh_auth_sock \
     solune/symfony:latest \
