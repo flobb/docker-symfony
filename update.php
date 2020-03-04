@@ -4,7 +4,12 @@
 const PATTERN_INVALID_TAG = '#((5(\.|-))|RC|rc|beta|alpha|latest)#';
 const PATTERN_VERSION_FULL = '#^\d+\.\d+\.\d+$#';
 
-const DEBIAN_RELEASES = ['buster', 'stretch', 'jessie'];
+// Ordered by release date, the latest first
+const DEBIAN_RELEASES = [
+    'buster',
+    'stretch',
+    'jessie',
+];
 
 //
 // Fetches all available tags
@@ -32,9 +37,9 @@ $tagsList = array_filter($tagsList, static function ($e) { return !(preg_match(P
 // Discards non-full-versioned tags
 //
 
-$latestPhpReleases = [];
-$latestDebianReleases = [];
-$latestAlpineReleases = [];
+$latestPhpReleases = []; // grouped by PHP major+minor releases
+$latestDebianReleases = []; // grouped by PHP major+minor releases
+$latestAlpineReleases = []; // grouped by PHP major+minor releases
 
 $tagsList = array_filter(array_map(
     static function (
@@ -54,24 +59,29 @@ $tagsList = array_filter(array_map(
 
         [$version, $variant, $suite] = $pieces;
 
-        [$major, $minor, ] = explode('.', $version);
-        $latestPhpReleases["$major.$minor"] = $version;
+        $majorMinor = substr($version, 0, strrpos($version, '.'));
+        if (!isset($latestPhpReleases[$majorMinor])) {
+            $latestPhpReleases[$majorMinor] = [];
+        }
+        if (!in_array($version, $latestPhpReleases[$majorMinor])) {
+            $latestPhpReleases[$majorMinor][] = $version;
+        }
 
         if (in_array($suite, DEBIAN_RELEASES)) {
-            if (!isset($latestDebianReleases["$major.$minor"])) {
-                $latestDebianReleases["$major.$minor"] = [];
+            if (!isset($latestDebianReleases[$majorMinor])) {
+                $latestDebianReleases[$majorMinor] = [];
             }
-            if (!in_array($suite, $latestDebianReleases["$major.$minor"], true)) {
-                $latestDebianReleases["$major.$minor"][] = $suite;
+            if (!in_array($suite, $latestDebianReleases[$majorMinor], true)) {
+                $latestDebianReleases[$majorMinor][] = $suite;
             }
         }
 
         if (0 === strpos($suite, 'alpine')) {
-            if (!isset($latestAlpineReleases["$major.$minor"])) {
-                $latestAlpineReleases["$major.$minor"] = [];
+            if (!isset($latestAlpineReleases[$majorMinor])) {
+                $latestAlpineReleases[$majorMinor] = [];
             }
-            if (!in_array($alpineVersion = substr($suite, 6), $latestAlpineReleases["$major.$minor"], true)) {
-                $latestAlpineReleases["$major.$minor"][] = $alpineVersion;
+            if (!in_array($alpineVersion = substr($suite, 6), $latestAlpineReleases[$majorMinor], true)) {
+                $latestAlpineReleases[$majorMinor][] = $alpineVersion;
             }
         }
 
@@ -84,7 +94,13 @@ $tagsList = array_filter(array_map(
     }, $tagsList)
 );
 
-// Discard non-latest patch versions
+// Find latest PHP patch release for each major+minor
+$latestPhpReleases = array_map(static function (array $releases): string {
+    usort($releases, 'version_compare');
+    return end($releases);
+}, $latestPhpReleases);
+
+// Discard non-latest PHP patch versions
 $tagsList = array_filter($tagsList, static function (array $tag) use ($latestPhpReleases): bool {
     return in_array($tag['version'], $latestPhpReleases, true);
 });
@@ -108,27 +124,26 @@ $latestAlpineReleases = array_map(static function (array $releases): string {
 //
 
 foreach ($tagsList as $t) {
-    $image = $t['_original'];
-    $majorMinorVersion = substr($t['version'], 0, strrpos($t['version'], '.'));
+    $majorMinor = substr($t['version'], 0, strrpos($t['version'], '.'));
 
     $tags = [
         sprintf('%s-%s-%s', $t['version'], $t['suite'], $t['variant']),
-        sprintf('%s-%s-%s', $majorMinorVersion, $t['suite'], $t['variant']),
+        sprintf('%s-%s-%s', $majorMinor, $t['suite'], $t['variant']),
     ];
 
-    // Adds aliases for "alpine"
-    if ($latestAlpineReleases[$majorMinorVersion] === $t['suite']) {
+    // Adds aliases for Alpine ("alpine" suite points to the latest available)
+    if ($latestAlpineReleases[$majorMinor] === $t['suite']) {
         $tags[] = sprintf('%s-alpine-%s', $t['version'], $t['variant']);
-        $tags[] = sprintf('%s-alpine-%s', $majorMinorVersion, $t['variant']);
+        $tags[] = sprintf('%s-alpine-%s', $majorMinor, $t['variant']);
     }
 
-    // Adds aliases for latest debian (hide suite)
-    if ($latestDebianReleases[$majorMinorVersion] === $t['suite']) {
+    // Adds aliases for latest Debian (hides suite and points tag to the latest available)
+    if ($latestDebianReleases[$majorMinor] === $t['suite']) {
         $tags[] = sprintf('%s-%s', $t['version'], $t['variant']);
-        $tags[] = sprintf('%s-%s', $majorMinorVersion, $t['variant']);
+        $tags[] = sprintf('%s-%s', $majorMinor, $t['variant']);
     }
 
-    // Adds aliases for cli (hides cli suffix)
+    // Adds aliases for cli (duplicates cli tags without the "cli" suffix)
     if ('cli' === $t['variant']) {
         $extras = [];
         foreach ($tags as $tag) {
@@ -137,10 +152,12 @@ foreach ($tagsList as $t) {
         $tags = array_merge($tags, $extras);
     }
 
-    $dir = sprintf('%s/%s/%s', $majorMinorVersion, $t['suite'], $t['variant']);
+    $dir = sprintf('%s/%s/%s', $majorMinor, $t['suite'], $t['variant']);
+    $officialImageTag = $t['_original'];
+
     echo "$dir\n";
     echo '    TAGS: ' . implode(', ', $tags) . "\n";
-    echo "    FROM: $image\n\n";
+    echo "    FROM: $officialImageTag\n\n";
 }
 
 echo "Total: " . count($tagsList) . "\n";
