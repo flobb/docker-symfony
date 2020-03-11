@@ -1,10 +1,10 @@
 #
-# NOTE: THIS DOCKERFILE IS GENERATED VIA "update.sh"
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "update.php"
 #
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.3.15-apache-stretch
+FROM php:7.3.14-apache-stretch
 
 ARG APCU_VERSION=5.1.17
 
@@ -23,7 +23,9 @@ RUN buildDeps=" \
         libzip4 \
         unzip \
     && docker-php-ext-install opcache mbstring intl zip \
-    && pecl install apcu-$APCU_VERSION && docker-php-ext-enable apcu \
+    && pecl install apcu-$APCU_VERSION \
+    && pecl clear-cache \
+    && docker-php-ext-enable apcu \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

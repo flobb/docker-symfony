@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-const PATTERN_INVALID_TAG = '#((5(\.|-))|RC|rc|beta|alpha|latest)#';
+const PATTERN_INVALID_TAG = '#5|((5(\.|-))|7\.0|7\.1|RC|rc|beta|alpha|latest)#';
 const PATTERN_VERSION_FULL = '#^\d+\.\d+\.\d+$#';
 
 // Ordered by release date, the latest first
@@ -28,10 +28,10 @@ if (empty($tagsList[1])) {
 $tagsList = $tagsList[1];
 
 //
-// Discards unstable releases
+// Discards unsupported PHP releases
 //
 
-$tagsList = array_filter($tagsList, static function ($e) { return !(preg_match(PATTERN_INVALID_TAG, $e) || '5' === $e); });
+$tagsList = array_filter($tagsList, static function ($e) { return !preg_match(PATTERN_INVALID_TAG, $e); });
 
 //
 // Discards non-full-versioned tags
@@ -123,6 +123,16 @@ $latestAlpineReleases = array_map(static function (array $releases): string {
 //  Update
 //
 
+$warning = '#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "update.php"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+
+';
+
+$tagsList = array_reverse($tagsList);
+$finalTagsList = [];
 foreach ($tagsList as $t) {
     $majorMinor = substr($t['version'], 0, strrpos($t['version'], '.'));
 
@@ -152,12 +162,46 @@ foreach ($tagsList as $t) {
         $tags = array_merge($tags, $extras);
     }
 
-    $dir = sprintf('%s/%s/%s', $majorMinor, $t['suite'], $t['variant']);
-    $officialImageTag = $t['_original'];
+    usort($tags, function($a, $b) {
+        return mb_strlen($a) - mb_strlen($b);
+    });
 
-    echo "$dir\n";
-    echo '    TAGS: ' . implode(', ', $tags) . "\n";
-    echo "    FROM: $officialImageTag\n\n";
+    // Build the folder and all needded files
+    $directory = sprintf('%s/%s/%s', $majorMinor, $t['suite'], $t['variant']);
+    if (!file_exists($directory) && !mkdir($directory, 0775, true)) {
+        throw new \RuntimeException(sprintf('Cannot create the directory "%s".', $directory));
+    }
+
+    $os = in_array($t['suite'], ['jessie', 'stretch', 'buster'],true) ? 'debian' : 'alpine';
+    $haveApache = 'apache' === $t['variant'];
+
+    $dockerfile = $warning.file_get_contents(sprintf('Dockerfile-%s.template', $os));
+
+    $dockerfile = preg_replace('#%%IMAGE_TAG%%#u', $t['_original'], $dockerfile);
+    $dockerfile = preg_replace('#%%APCU_VERSION%%#u', '5.1.17', $dockerfile); // TODO check the right version
+    $dockerfile = preg_replace('#%%SYMFONY%%#u', file_get_contents('symfony.template'), $dockerfile);
+
+    if ($haveApache) {
+        $dockerfile = preg_replace('#%%APACHE%%#u', file_get_contents('apache.template'), $dockerfile);
+        copy('apache-vhost.conf', sprintf('%s/%s', $directory, '000-default.conf'));
+    } else {
+        $dockerfile = preg_replace('#%%APACHE%%#u', '', $dockerfile);
+    }
+
+    $dockerfile = preg_replace(sprintf('#%s{3,}#u', PHP_EOL), PHP_EOL.PHP_EOL, $dockerfile);
+
+    file_put_contents(sprintf('%s/%s', $directory, 'Dockerfile'), $dockerfile);
+    copy(sprintf('entrypoint-%s', $os), sprintf('%s/%s', $directory, 'entrypoint'));
+
+    $finalTagsList[$directory] = $tags;
 }
 
-echo "Total: " . count($tagsList) . "\n";
+$travisTags = '';
+$readmeTags = '';
+foreach ($finalTagsList as $dir => $tags) {
+    $travisTags .= sprintf('  - FOLDER=%s TAGS=%s%s', $dir, implode(',', $tags), PHP_EOL);
+    $readmeTags .= sprintf('- `%s` ([%s/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/%s/Dockerfile))%s', implode('`, `', $tags), $dir, $dir, PHP_EOL);
+}
+
+file_put_contents('.travis.yml', preg_replace('#env:[^\:]*script:#u', sprintf('env:%s%s%sscript:', PHP_EOL, $travisTags, PHP_EOL), file_get_contents('.travis.yml')));
+file_put_contents('README.md', preg_replace('@## Tags[^#]*@u', sprintf('## Tags%s%s%s%s', PHP_EOL, PHP_EOL, $readmeTags, PHP_EOL), file_get_contents('README.md')));
