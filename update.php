@@ -191,7 +191,10 @@ foreach ($tagsList as $t) {
     $dockerfile = preg_replace(sprintf('#%s{3,}#u', PHP_EOL), PHP_EOL.PHP_EOL, $dockerfile);
 
     file_put_contents(sprintf('%s/%s', $directory, 'Dockerfile'), $dockerfile);
-    copy(sprintf('entrypoint-%s', $os), sprintf('%s/%s', $directory, 'entrypoint'));
+
+    $entrypointFile = sprintf('%s/%s', $directory, 'entrypoint');
+    copy(sprintf('entrypoint-%s', $os), $entrypointFile);
+    chmod($entrypointFile, 0755);
 
     $finalTagsList[$directory] = $tags;
 }
