@@ -7,5 +7,5 @@ sed -ie "s/`id -u www-data`:`id -g www-data`/`stat -c %u /srv`:`stat -c %g /srv`
 if [ "$1" = "php-fpm" ]; then
     exec "$@"
 else
-    su www-data -s /bin/bash -c "$*"
+    su www-data -s /bin/sh -c "$*"
 fi
