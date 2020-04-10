@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.2.28-fpm-alpine3.10
+FROM php:7.2.29-fpm-alpine3.10
 
 ARG APCU_VERSION=5.1.17
 
