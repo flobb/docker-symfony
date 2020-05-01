@@ -57,8 +57,6 @@ script:
       docker build . -t "${IMAGE}"
       IMAGESLIST+=("${IMAGE}")
     done
-
-after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - |
     for IMAGE in "${IMAGESLIST[@]}"
