@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.3.16-zts-stretch
+FROM php:7.3.17-zts-stretch
 
 ARG APCU_VERSION=5.1.17
 

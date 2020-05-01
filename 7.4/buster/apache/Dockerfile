@@ -51,7 +51,7 @@ RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN mkdir -p /srv/public \
-    chown -R www-data:www-data /srv
+    && chown -R www-data:www-data /srv
 
 RUN a2enmod rewrite
 

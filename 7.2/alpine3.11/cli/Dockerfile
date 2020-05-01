@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.2.29-cli-alpine3.11
+FROM php:7.2.30-cli-alpine3.11
 
 ARG APCU_VERSION=5.1.17
 

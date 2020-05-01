@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.2.29-fpm-buster
+FROM php:7.2.30-fpm-buster
 
 ARG APCU_VERSION=5.1.17
 

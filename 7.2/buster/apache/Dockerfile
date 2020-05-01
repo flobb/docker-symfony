@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.2.29-apache-buster
+FROM php:7.2.30-apache-buster
 
 ARG APCU_VERSION=5.1.17
 
@@ -51,7 +51,7 @@ RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN mkdir -p /srv/public \
-    chown -R www-data:www-data /srv
+    && chown -R www-data:www-data /srv
 
 RUN a2enmod rewrite
 
