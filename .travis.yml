@@ -49,11 +49,11 @@ script:
   - cd $FOLDER
   - IMAGESLIST=()
   - IFS=, read -a TAGSLIST <<< "$TAGS"
+  - docker build .
   - |
     for TAG in "${TAGSLIST[@]}"
     do
       IMAGE="solune/symfony:${TAG}"
-      echo "Building image ${TAG}"
       docker build . -t "${IMAGE}"
       IMAGESLIST+=("${IMAGE}")
     done
