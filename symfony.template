@@ -14,4 +14,6 @@ RUN SYMFONYCLI_VERSION=`curl -sS https://get.symfony.com/cli/LATEST` \
     && [ 'i386' = `uname -m` ] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
     && curl -sS https://get.symfony.com/cli/v$SYMFONYCLI_VERSION/symfony_linux_$SYMFONYCLI_MACHINE > /usr/local/bin/symfony.gz \
     && gzip -d /usr/local/bin/symfony.gz \
-    && chmod +x /usr/local/bin/symfony
+    && chmod +x /usr/local/bin/symfony \
+    && /var/www/.symfony \
+    && chown -R www-data:www-data /var/www/.symfony
