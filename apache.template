@@ -4,3 +4,5 @@ RUN mkdir -p /srv/public \
     && chown -R www-data:www-data /srv
 
 RUN a2enmod rewrite
+
+CMD ["apache2-foreground"]
