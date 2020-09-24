@@ -6,26 +6,26 @@ branches:
     - master
 
 env:
-  - FOLDER=7.4/buster/zts TAGS=7.4-zts,7.4.9-zts,7.4-buster-zts,7.4.9-buster-zts
-  - FOLDER=7.4/alpine3.12/zts TAGS=7.4-alpine-zts,7.4.9-alpine-zts,7.4-alpine3.12-zts,7.4.9-alpine3.12-zts
-  - FOLDER=7.4/alpine3.11/zts TAGS=7.4-alpine3.11-zts,7.4.9-alpine3.11-zts
-  - FOLDER=7.4/buster/fpm TAGS=7.4-fpm,7.4.9-fpm,7.4-buster-fpm,7.4.9-buster-fpm
-  - FOLDER=7.4/alpine3.12/fpm TAGS=7.4-alpine-fpm,7.4.9-alpine-fpm,7.4-alpine3.12-fpm,7.4.9-alpine3.12-fpm
-  - FOLDER=7.4/alpine3.11/fpm TAGS=7.4-alpine3.11-fpm,7.4.9-alpine3.11-fpm
-  - FOLDER=7.4/buster/cli TAGS=7.4,7.4.9,7.4-cli,7.4.9-cli,7.4-buster,7.4.9-buster,7.4-buster-cli,7.4.9-buster-cli
-  - FOLDER=7.4/alpine3.12/cli TAGS=7.4-alpine,7.4.9-alpine,7.4-alpine-cli,7.4-alpine3.12,7.4.9-alpine-cli,7.4.9-alpine3.12,7.4-alpine3.12-cli,7.4.9-alpine3.12-cli
-  - FOLDER=7.4/alpine3.11/cli TAGS=7.4-alpine3.11,7.4.9-alpine3.11,7.4-alpine3.11-cli,7.4.9-alpine3.11-cli
-  - FOLDER=7.4/buster/apache TAGS=7.4-apache,7.4.9-apache,7.4-buster-apache,7.4.9-buster-apache
-  - FOLDER=7.3/buster/zts TAGS=7.3-zts,7.3.21-zts,7.3-buster-zts,7.3.21-buster-zts
-  - FOLDER=7.3/alpine3.12/zts TAGS=7.3-alpine-zts,7.3.21-alpine-zts,7.3-alpine3.12-zts,7.3.21-alpine3.12-zts
-  - FOLDER=7.3/alpine3.11/zts TAGS=7.3-alpine3.11-zts,7.3.21-alpine3.11-zts
-  - FOLDER=7.3/buster/fpm TAGS=7.3-fpm,7.3.21-fpm,7.3-buster-fpm,7.3.21-buster-fpm
-  - FOLDER=7.3/alpine3.12/fpm TAGS=7.3-alpine-fpm,7.3.21-alpine-fpm,7.3-alpine3.12-fpm,7.3.21-alpine3.12-fpm
-  - FOLDER=7.3/alpine3.11/fpm TAGS=7.3-alpine3.11-fpm,7.3.21-alpine3.11-fpm
-  - FOLDER=7.3/buster/cli TAGS=7.3,7.3.21,7.3-cli,7.3.21-cli,7.3-buster,7.3.21-buster,7.3-buster-cli,7.3.21-buster-cli
-  - FOLDER=7.3/alpine3.12/cli TAGS=7.3-alpine,7.3.21-alpine,7.3-alpine-cli,7.3-alpine3.12,7.3.21-alpine-cli,7.3.21-alpine3.12,7.3-alpine3.12-cli,7.3.21-alpine3.12-cli
-  - FOLDER=7.3/alpine3.11/cli TAGS=7.3-alpine3.11,7.3.21-alpine3.11,7.3-alpine3.11-cli,7.3.21-alpine3.11-cli
-  - FOLDER=7.3/buster/apache TAGS=7.3-apache,7.3.21-apache,7.3-buster-apache,7.3.21-buster-apache
+  - FOLDER=7.4/buster/zts TAGS=7.4-zts,7.4.10-zts,7.4-buster-zts,7.4.10-buster-zts
+  - FOLDER=7.4/alpine3.12/zts TAGS=7.4-alpine-zts,7.4.10-alpine-zts,7.4-alpine3.12-zts,7.4.10-alpine3.12-zts
+  - FOLDER=7.4/alpine3.11/zts TAGS=7.4-alpine3.11-zts,7.4.10-alpine3.11-zts
+  - FOLDER=7.4/buster/fpm TAGS=7.4-fpm,7.4.10-fpm,7.4-buster-fpm,7.4.10-buster-fpm
+  - FOLDER=7.4/alpine3.12/fpm TAGS=7.4-alpine-fpm,7.4.10-alpine-fpm,7.4-alpine3.12-fpm,7.4.10-alpine3.12-fpm
+  - FOLDER=7.4/alpine3.11/fpm TAGS=7.4-alpine3.11-fpm,7.4.10-alpine3.11-fpm
+  - FOLDER=7.4/buster/cli TAGS=7.4,7.4.10,7.4-cli,7.4.10-cli,7.4-buster,7.4.10-buster,7.4-buster-cli,7.4.10-buster-cli
+  - FOLDER=7.4/alpine3.12/cli TAGS=7.4-alpine,7.4.10-alpine,7.4-alpine-cli,7.4-alpine3.12,7.4.10-alpine-cli,7.4.10-alpine3.12,7.4-alpine3.12-cli,7.4.10-alpine3.12-cli
+  - FOLDER=7.4/alpine3.11/cli TAGS=7.4-alpine3.11,7.4.10-alpine3.11,7.4-alpine3.11-cli,7.4.10-alpine3.11-cli
+  - FOLDER=7.4/buster/apache TAGS=7.4-apache,7.4.10-apache,7.4-buster-apache,7.4.10-buster-apache
+  - FOLDER=7.3/buster/zts TAGS=7.3-zts,7.3.22-zts,7.3-buster-zts,7.3.22-buster-zts
+  - FOLDER=7.3/alpine3.12/zts TAGS=7.3-alpine-zts,7.3.22-alpine-zts,7.3-alpine3.12-zts,7.3.22-alpine3.12-zts
+  - FOLDER=7.3/alpine3.11/zts TAGS=7.3-alpine3.11-zts,7.3.22-alpine3.11-zts
+  - FOLDER=7.3/buster/fpm TAGS=7.3-fpm,7.3.22-fpm,7.3-buster-fpm,7.3.22-buster-fpm
+  - FOLDER=7.3/alpine3.12/fpm TAGS=7.3-alpine-fpm,7.3.22-alpine-fpm,7.3-alpine3.12-fpm,7.3.22-alpine3.12-fpm
+  - FOLDER=7.3/alpine3.11/fpm TAGS=7.3-alpine3.11-fpm,7.3.22-alpine3.11-fpm
+  - FOLDER=7.3/buster/cli TAGS=7.3,7.3.22,7.3-cli,7.3.22-cli,7.3-buster,7.3.22-buster,7.3-buster-cli,7.3.22-buster-cli
+  - FOLDER=7.3/alpine3.12/cli TAGS=7.3-alpine,7.3.22-alpine,7.3-alpine-cli,7.3-alpine3.12,7.3.22-alpine-cli,7.3.22-alpine3.12,7.3-alpine3.12-cli,7.3.22-alpine3.12-cli
+  - FOLDER=7.3/alpine3.11/cli TAGS=7.3-alpine3.11,7.3.22-alpine3.11,7.3-alpine3.11-cli,7.3.22-alpine3.11-cli
+  - FOLDER=7.3/buster/apache TAGS=7.3-apache,7.3.22-apache,7.3-buster-apache,7.3.22-buster-apache
   - FOLDER=7.2/buster/zts TAGS=7.2-zts,7.2.33-zts,7.2-buster-zts,7.2.33-buster-zts
   - FOLDER=7.2/alpine3.12/zts TAGS=7.2-alpine-zts,7.2.33-alpine-zts,7.2-alpine3.12-zts,7.2.33-alpine3.12-zts
   - FOLDER=7.2/alpine3.11/zts TAGS=7.2-alpine3.11-zts,7.2.33-alpine3.11-zts

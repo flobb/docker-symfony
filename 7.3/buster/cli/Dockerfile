@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.3.21-cli-buster
+FROM php:7.3.22-cli-buster
 
 ARG APCU_VERSION=5.1.17
 
