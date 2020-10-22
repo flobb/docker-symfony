@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:7.2.33-apache-buster
+FROM php:7.2.34-apache-buster
 
 ARG APCU_VERSION=5.1.17
 
