@@ -48,16 +48,6 @@ If you choose the image with Apache, the default VHOST will have the rewrite rul
 - `7.3-alpine`, `7.3.27-alpine`, `7.3-alpine-cli`, `7.3-alpine3.13`, `7.3.27-alpine-cli`, `7.3.27-alpine3.13`, `7.3-alpine3.13-cli`, `7.3.27-alpine3.13-cli` ([7.3/alpine3.13/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.13/cli/Dockerfile))
 - `7.3-alpine3.12`, `7.3.27-alpine3.12`, `7.3-alpine3.12-cli`, `7.3.27-alpine3.12-cli` ([7.3/alpine3.12/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/alpine3.12/cli/Dockerfile))
 - `7.3-apache`, `7.3.27-apache`, `7.3-buster-apache`, `7.3.27-buster-apache` ([7.3/buster/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.3/buster/apache/Dockerfile))
-- `7.2-zts`, `7.2.34-zts`, `7.2-buster-zts`, `7.2.34-buster-zts` ([7.2/buster/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/buster/zts/Dockerfile))
-- `7.2-alpine-zts`, `7.2.34-alpine-zts`, `7.2-alpine3.12-zts`, `7.2.34-alpine3.12-zts` ([7.2/alpine3.12/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.12/zts/Dockerfile))
-- `7.2-alpine3.11-zts`, `7.2.34-alpine3.11-zts` ([7.2/alpine3.11/zts/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.11/zts/Dockerfile))
-- `7.2-fpm`, `7.2.34-fpm`, `7.2-buster-fpm`, `7.2.34-buster-fpm` ([7.2/buster/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/buster/fpm/Dockerfile))
-- `7.2-alpine-fpm`, `7.2.34-alpine-fpm`, `7.2-alpine3.12-fpm`, `7.2.34-alpine3.12-fpm` ([7.2/alpine3.12/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.12/fpm/Dockerfile))
-- `7.2-alpine3.11-fpm`, `7.2.34-alpine3.11-fpm` ([7.2/alpine3.11/fpm/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.11/fpm/Dockerfile))
-- `7.2`, `7.2.34`, `7.2-cli`, `7.2.34-cli`, `7.2-buster`, `7.2.34-buster`, `7.2-buster-cli`, `7.2.34-buster-cli` ([7.2/buster/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/buster/cli/Dockerfile))
-- `7.2-alpine`, `7.2.34-alpine`, `7.2-alpine-cli`, `7.2-alpine3.12`, `7.2.34-alpine-cli`, `7.2.34-alpine3.12`, `7.2-alpine3.12-cli`, `7.2.34-alpine3.12-cli` ([7.2/alpine3.12/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.12/cli/Dockerfile))
-- `7.2-alpine3.11`, `7.2.34-alpine3.11`, `7.2-alpine3.11-cli`, `7.2.34-alpine3.11-cli` ([7.2/alpine3.11/cli/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/alpine3.11/cli/Dockerfile))
-- `7.2-apache`, `7.2.34-apache`, `7.2-buster-apache`, `7.2.34-buster-apache` ([7.2/buster/apache/Dockerfile](https://github.com/florianbelhomme/docker-symfony/tree/master/7.2/buster/apache/Dockerfile))
 
 ## Usage
 

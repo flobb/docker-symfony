@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-const PATTERN_INVALID_TAG = '#5|((5(\.|-))|7\.0|7\.1|RC|rc|beta|alpha|latest|stretch)#';
+const PATTERN_INVALID_TAG = '#5|((5(\.|-))|7\.0|7\.1|7\.2|RC|rc|beta|alpha|latest|stretch)#';
 const PATTERN_VERSION_FULL = '#^\d+\.\d+\.\d+$#';
 
 // Ordered by release date, the latest first

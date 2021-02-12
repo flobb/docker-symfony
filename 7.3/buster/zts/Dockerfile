@@ -39,14 +39,14 @@ RUN echo "short_open_tag=off" >> /usr/local/etc/php/zdocker.ini \
     && echo "realpath_cache_ttl=600" >> /usr/local/etc/php/conf.d/zdocker.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && mkdir -p /var/www/.composer/vendor/bin \
-    && chown -R www-data:www-data /var/www/.composer
+    && mkdir -p /var/www/.composer
 
 RUN SYMFONYCLI_VERSION=`curl -sSL https://get.symfony.com/cli/LATEST` \
     && [ 'i386' = `uname -m` ] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
     && curl -sSL https://github.com/symfony/cli/releases/download/v$SYMFONYCLI_VERSION/symfony_linux_$SYMFONYCLI_MACHINE.gz > /usr/local/bin/symfony.gz \
     && gzip -d /usr/local/bin/symfony.gz \
-    && chmod +x /usr/local/bin/symfony
+    && chmod +x /usr/local/bin/symfony \
+    && mkdir -p /var/www/.symfony
 
 ADD entrypoint /usr/local/bin/entrypoint
 

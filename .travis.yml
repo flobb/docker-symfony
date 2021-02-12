@@ -37,16 +37,6 @@ env:
   - FOLDER=7.3/alpine3.13/cli TAGS=7.3-alpine,7.3.27-alpine,7.3-alpine-cli,7.3-alpine3.13,7.3.27-alpine-cli,7.3.27-alpine3.13,7.3-alpine3.13-cli,7.3.27-alpine3.13-cli
   - FOLDER=7.3/alpine3.12/cli TAGS=7.3-alpine3.12,7.3.27-alpine3.12,7.3-alpine3.12-cli,7.3.27-alpine3.12-cli
   - FOLDER=7.3/buster/apache TAGS=7.3-apache,7.3.27-apache,7.3-buster-apache,7.3.27-buster-apache
-  - FOLDER=7.2/buster/zts TAGS=7.2-zts,7.2.34-zts,7.2-buster-zts,7.2.34-buster-zts
-  - FOLDER=7.2/alpine3.12/zts TAGS=7.2-alpine-zts,7.2.34-alpine-zts,7.2-alpine3.12-zts,7.2.34-alpine3.12-zts
-  - FOLDER=7.2/alpine3.11/zts TAGS=7.2-alpine3.11-zts,7.2.34-alpine3.11-zts
-  - FOLDER=7.2/buster/fpm TAGS=7.2-fpm,7.2.34-fpm,7.2-buster-fpm,7.2.34-buster-fpm
-  - FOLDER=7.2/alpine3.12/fpm TAGS=7.2-alpine-fpm,7.2.34-alpine-fpm,7.2-alpine3.12-fpm,7.2.34-alpine3.12-fpm
-  - FOLDER=7.2/alpine3.11/fpm TAGS=7.2-alpine3.11-fpm,7.2.34-alpine3.11-fpm
-  - FOLDER=7.2/buster/cli TAGS=7.2,7.2.34,7.2-cli,7.2.34-cli,7.2-buster,7.2.34-buster,7.2-buster-cli,7.2.34-buster-cli
-  - FOLDER=7.2/alpine3.12/cli TAGS=7.2-alpine,7.2.34-alpine,7.2-alpine-cli,7.2-alpine3.12,7.2.34-alpine-cli,7.2.34-alpine3.12,7.2-alpine3.12-cli,7.2.34-alpine3.12-cli
-  - FOLDER=7.2/alpine3.11/cli TAGS=7.2-alpine3.11,7.2.34-alpine3.11,7.2-alpine3.11-cli,7.2.34-alpine3.11-cli
-  - FOLDER=7.2/buster/apache TAGS=7.2-apache,7.2.34-apache,7.2-buster-apache,7.2.34-buster-apache
 
 script:
   - cd $FOLDER
