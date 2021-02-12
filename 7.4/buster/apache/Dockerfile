@@ -55,6 +55,8 @@ RUN mkdir -p /srv/public \
 
 RUN a2enmod rewrite
 
+CMD ["apache2-foreground"]
+
 ADD entrypoint /usr/local/bin/entrypoint
 
 ENTRYPOINT ["entrypoint"]
