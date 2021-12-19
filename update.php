@@ -1,11 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-const PATTERN_INVALID_TAG = '#5|((5(\.|-))|7\.0|7\.1|7\.2|RC|rc|beta|alpha|latest|stretch)#';
+const PATTERN_INVALID_TAG = '#5|((5(\.|-))|7\.0|7\.1|7\.2|7\.3|7\.4|RC|rc|beta|alpha|latest|stretch)#';
 const PATTERN_VERSION_FULL = '#^\d+\.\d+\.\d+$#';
 
 // Ordered by release date, the latest first
 const DEBIAN_RELEASES = [
+    'bullseye',
     'buster',
     'stretch',
     'jessie',
@@ -172,7 +173,7 @@ foreach ($tagsList as $t) {
         throw new \RuntimeException(sprintf('Cannot create the directory "%s".', $directory));
     }
 
-    $os = in_array($t['suite'], ['jessie', 'stretch', 'buster'],true) ? 'debian' : 'alpine';
+    $os = in_array($t['suite'], DEBIAN_RELEASES,true) ? 'debian' : 'alpine';
     $haveApache = 'apache' === $t['variant'];
 
     $dockerfile = $warning.file_get_contents(sprintf('Dockerfile-%s.template', $os));

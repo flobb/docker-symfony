@@ -8,31 +8,27 @@ FROM php:8.0.14-fpm-bullseye
 
 ARG APCU_VERSION=5.1.17
 
-RUN apk add --no-cache --virtual .build-deps \
-    $PHPIZE_DEPS \
-    icu-dev \
-    libzip-dev \
-    zlib-dev \
-    && apk add --no-cache \
-    ca-certificates \
-    git \
-    openssh-client \
-    unzip \
-    oniguruma-dev
-
-RUN docker-php-ext-install intl opcache mbstring zip \
+RUN buildDeps=" \
+        libicu-dev \
+        zlib1g-dev \
+        libzip-dev \
+        libonig-dev \
+    " \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        $buildDeps \
+        ca-certificates \
+        git \
+        openssh-client \
+        libzip4 \
+        unzip \
+    && docker-php-ext-install opcache mbstring intl zip \
     && pecl install apcu-$APCU_VERSION \
     && pecl clear-cache \
-    && docker-php-ext-enable apcu
-
-RUN runDeps="$( \
-    		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
-    			| tr ',' '\n' \
-    			| sort -u \
-    			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
-    	)" \
-    && apk add --no-cache --virtual .phpexts-rundeps $runDeps \
-    && apk del .build-deps
+    && docker-php-ext-enable apcu \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # http://symfony.com/doc/current/performance.html
 RUN echo "short_open_tag=off" >> /usr/local/etc/php/zdocker.ini \
@@ -51,8 +47,6 @@ RUN SYMFONYCLI_VERSION=`curl -sSL https://get.symfony.com/cli/LATEST` \
     && gzip -d /usr/local/bin/symfony.gz \
     && chmod +x /usr/local/bin/symfony \
     && mkdir -p /var/www/.symfony
-
-RUN sed -i '/www-data/s/\/home\/www-data/\/var\/www\//g' /etc/passwd
 
 ADD entrypoint /usr/local/bin/entrypoint
 
