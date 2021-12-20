@@ -109,7 +109,7 @@ $tagsList = array_filter($tagsList, static function (array $tag) use ($latestPhp
 // Find latest debian release by PHP major+minor release
 $latestDebianReleases = array_map(static function (array $releases): string {
     usort($releases, static function ($a, $b): int {
-        return array_search($a, DEBIAN_RELEASES) <=> array_search($a, DEBIAN_RELEASES);
+        return array_search($a, DEBIAN_RELEASES) <=> array_search($b, DEBIAN_RELEASES);
     });
     return end($releases);
 }, $latestDebianReleases);
