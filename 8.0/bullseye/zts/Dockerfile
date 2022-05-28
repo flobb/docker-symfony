@@ -4,9 +4,9 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:8.0.14-zts-bullseye
+FROM php:8.0.19-zts-bullseye
 
-ARG APCU_VERSION=5.1.17
+ARG APCU_VERSION=5.1.21
 
 RUN buildDeps=" \
         libicu-dev \
@@ -41,12 +41,10 @@ RUN echo "short_open_tag=off" >> /usr/local/etc/php/zdocker.ini \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && mkdir -p /var/www/.composer
 
-RUN SYMFONYCLI_VERSION=`curl -sSL https://get.symfony.com/cli/LATEST` \
-    && [ 'i386' = `uname -m` ] && SYMFONYCLI_MACHINE="386" || SYMFONYCLI_MACHINE="amd64" \
-    && curl -sSL https://github.com/symfony/cli/releases/download/v$SYMFONYCLI_VERSION/symfony_linux_$SYMFONYCLI_MACHINE.gz > /usr/local/bin/symfony.gz \
-    && gzip -d /usr/local/bin/symfony.gz \
-    && chmod +x /usr/local/bin/symfony \
-    && mkdir -p /var/www/.symfony
+RUN echo 'deb [trusted=yes] https://repo.symfony.com/apt/ /' | tee /etc/apt/sources.list.d/symfony-cli.list \
+    && apt update \
+    && apt install symfony-cli \
+    && mkdir -p /var/www/.symfony5
 
 ADD entrypoint /usr/local/bin/entrypoint
 

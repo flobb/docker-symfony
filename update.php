@@ -10,6 +10,8 @@ const DEBIAN_RELEASES = [
     'buster',
     'stretch',
     'jessie',
+    'wheezy',
+    'squeeze',
 ];
 
 //
@@ -179,7 +181,7 @@ foreach ($tagsList as $t) {
     $dockerfile = $warning.file_get_contents(sprintf('Dockerfile-%s.template', $os));
 
     $dockerfile = preg_replace('#%%IMAGE_TAG%%#u', $t['_original'], $dockerfile);
-    $dockerfile = preg_replace('#%%APCU_VERSION%%#u', '5.1.17', $dockerfile); // TODO check the right version
+    $dockerfile = preg_replace('#%%APCU_VERSION%%#u', '5.1.21', $dockerfile); // TODO check the right version
     $dockerfile = preg_replace('#%%SYMFONY%%#u', file_get_contents('symfony.template'), $dockerfile);
 
     if ($haveApache) {
